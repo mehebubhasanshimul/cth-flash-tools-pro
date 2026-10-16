@@ -1,55 +1,71 @@
 <!doctype html>
 <html lang="bn">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#050507">
 <title>CTH FLASH TOOLS PRO</title>
 <style>
-:root{color-scheme:dark;--red:#ff2448;--bg:#08090d;--panel:#12141c;--muted:#aab0c0}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#2a0a14 0,#08090d 48%);color:#f7f7fb;font:15px system-ui,Arial}
-header{padding:24px 16px;text-align:center;border-bottom:1px solid #3b1822}header h1{margin:0;color:#ff3858;letter-spacing:1.5px;font-size:clamp(23px,5vw,34px);text-shadow:0 0 18px #ff244855}header p{margin:8px 0 0;color:var(--muted)}
-main{max-width:900px;margin:auto;padding:16px;display:grid;gap:14px}.card{background:linear-gradient(145deg,#171923,#0e1016);border:1px solid #33202a;border-radius:16px;padding:16px;box-shadow:0 8px 28px #0005}
-h2{font-size:18px;margin:0 0 12px;color:#ff627a}.row{display:flex;gap:8px;flex-wrap:wrap}button,input{font:inherit;border-radius:10px;padding:11px 13px}button{background:#a90d2b;color:white;border:1px solid #ff526c;cursor:pointer;font-weight:650}button.secondary{background:#20232d;border-color:#414653}button:disabled{opacity:.5;cursor:not-allowed}input{background:#080a10;color:white;border:1px solid #3c414f;flex:1;min-width:190px}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#07080c;border:1px solid #292d38;padding:12px;border-radius:10px;min-height:90px;color:#d9e2f3}.muted{color:var(--muted);line-height:1.55}.status{display:inline-block;padding:5px 9px;border-radius:20px;background:#282b36;color:#ddd;margin-bottom:10px}.warn{border-color:#7b4c19;color:#ffd8a3}.small{font-size:12px;color:#9ba2b3}footer{text-align:center;color:#828999;padding:20px}
+:root{--red:#ff334c;--red2:#a90b20;--cyan:#20f2ff;--purple:#b86cff;--green:#35e5a0;--bg:#050507;--panel:#0b0b12;--line:#3a171d;--muted:#b4b4c2}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html{scroll-behavior:smooth}body{margin:0;background:#020203;color:#f7f5f7;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+.app{max-width:760px;margin:auto;min-height:100vh;background:linear-gradient(#050507,#09070b 50%,#050507);overflow:hidden}
+.hero{padding:20px 15px 18px;position:relative;text-align:center;background:radial-gradient(ellipse at center,#3b0710 0,#100308 48%,#050507 78%);border-bottom:1px solid #4d101c}
+.logo{border:2px solid #ff243d;box-shadow:0 0 10px #ff193d, inset 0 0 20px #8a071a;border-radius:13px;padding:17px 8px 12px;position:relative;overflow:hidden;background:linear-gradient(135deg,#22030a,#08080c 45%,#30040b)}
+.logo:before,.logo:after{content:"";position:absolute;height:3px;background:#ff334c;box-shadow:0 0 12px #ff334c;width:60%;top:8px;left:-5%;transform:rotate(-9deg)}.logo:after{left:auto;right:-5%;top:auto;bottom:8px;transform:rotate(-9deg)}
+.brand{font-size:clamp(29px,8vw,48px);font-weight:1000;font-style:italic;line-height:1;letter-spacing:-1.5px;text-shadow:2px 2px 0 #7b0719,0 0 18px #ff234b}.brand small{display:block;color:#ff354d;font-size:.52em;letter-spacing:1px;margin-top:3px}.tag{font-size:11px;letter-spacing:1px;font-weight:800;color:#f6dfe3;margin-top:8px}
+.hamb,.settings{position:absolute;top:28px;width:42px;height:42px;border-radius:10px;border:2px solid var(--red);background:#10060a;color:white;box-shadow:0 0 12px #ff183c66;font-size:22px}.hamb{left:18px}.settings{right:18px}
+.nav{display:flex;gap:10px;padding:17px 14px;overflow-x:auto;scrollbar-width:none}.nav::-webkit-scrollbar{display:none}.nav button{flex:0 0 auto;background:#08080d;color:#f7f4f6;border:1px solid var(--red);border-radius:24px;padding:12px 16px;font-weight:750;letter-spacing:.3px;box-shadow:inset 0 0 10px #ff1b3210}.nav button:nth-child(2){border-color:var(--cyan)}.nav button:nth-child(4){border-color:var(--purple)}.nav button.active{background:#2a0710;box-shadow:0 0 12px #ff203a45}
+main{padding:0 14px 26px}.status{padding:17px 16px;border:1px solid var(--red);border-radius:19px;color:#ff5969;background:#0b080e;font-size:18px;font-weight:850;box-shadow:0 0 12px #ff193322;margin-bottom:23px}.section{margin:22px 0}.heading{font-size:16px;font-weight:850;letter-spacing:1px;color:#ff4b63;border-left:5px solid var(--red);padding-left:12px;margin:0 0 14px}.panel{border:1px solid #43202a;border-radius:17px;background:linear-gradient(145deg,#101017,#08080d);padding:16px;box-shadow:0 5px 18px #0007}.muted{color:var(--muted);line-height:1.5;font-size:14px}.btn{width:100%;border:2px solid #ff4b58;background:#0b080e;color:#fff;border-radius:17px;padding:16px 12px;font-weight:850;font-size:15px;box-shadow:inset 0 0 15px #ff243010;margin-top:10px}.btn:active,.tile:active{transform:scale(.985)}.btn.cyan{border-color:var(--cyan)}.btn.purple{border-color:var(--purple)}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}.tile{min-height:118px;border:2px solid #e84650;border-radius:20px;background:#09090f;color:#fff;padding:13px 7px;font-size:13px;font-weight:850;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:11px;text-align:center;box-shadow:inset 0 0 17px #ff23330a}.tile .ico{font-size:25px}.tile.cyan{border-color:#22dce7}.tile.purple{border-color:#aa63ee}.tile.green{border-color:#20c98d}.tile:disabled{opacity:.6}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#050509;color:#cbd5e1;border:1px solid #292633;padding:12px;border-radius:10px;min-height:45px;font-size:12px}.filepick{display:block;width:100%;margin-top:10px;padding:13px;border:1px dashed #ff4558;border-radius:12px;color:white}.pill{display:inline-block;padding:5px 9px;background:#291018;border-radius:20px;color:#ff8491;font-size:12px;font-weight:750}.foot{text-align:center;color:#777986;font-size:12px;padding:15px}.hidden{display:none!important}
+@media(min-width:600px){.app{border-left:1px solid #24131a;border-right:1px solid #24131a}.hero{padding-top:28px}.grid{gap:14px}.tile{min-height:130px}}
 </style>
 </head>
-<body>
-<header><h1>CTH FLASH TOOLS PRO</h1><p>DEVELOPER: SHADOW JOKER</p></header>
+<body><div class="app">
+<header class="hero"><button class="hamb" aria-label="Menu" onclick="go('home')">☰</button><button class="settings" aria-label="Settings" onclick="go('settings')">⚙</button>
+<div class="logo"><div class="brand">CTH<small>FLASH TOOLS PRO</small></div><div class="tag">ADB · FASTBOOT · USB OTG TOOLKIT</div></div>
+</header>
+<nav class="nav">
+<button class="active" onclick="go('home')">⌂ HOME</button><button onclick="go('adb')">▣ ADB</button><button onclick="go('fastboot')">ϟ FASTBOOT</button><button onclick="go('files')">▤ FILES</button><button onclick="go('guide')">ⓘ GUIDE</button>
+</nav>
 <main>
-<section class="card">
-<h2>Local Device Agent</h2><div id="status" class="status">Agent পরীক্ষা করা হচ্ছে…</div>
-<p class="muted">এই প্যানেলটি তোমার নিজের কম্পিউটার বা অনুমোদিত লোকাল পরিবেশে চালানো CTH Local Agent-এর সঙ্গে কাজ করে। Render/GitHub-এর ওয়েবসাইট সরাসরি USB পোর্ট দেখতে পারে না।</p>
-<div class="row"><input id="agent" value="http://127.0.0.1:8765" aria-label="Local agent address"><button onclick="checkAgent()">সংযোগ পরীক্ষা</button></div>
+<div id="status" class="status">• DEVICE NOT CONNECTED</div>
+<section id="home" class="page">
+<div class="section"><h2 class="heading">CONNECTION</h2><div class="panel"><div id="usbmessage">No USB device detected. Use a data-capable OTG cable, then request USB permission.</div><button class="btn" onclick="scanUSB()">SCAN USB / OTG DEVICES</button><button class="btn" onclick="go('guide')">ADB / FASTBOOT CONNECTION GUIDE</button><p class="muted">Browser USB permission only identifies compatible USB devices. It does not grant ADB shell or Fastboot protocol access automatically.</p><pre id="usbout">Ready.</pre></div></div>
+<div class="section"><h2 class="heading">ADB TOOLS</h2><div class="grid">
+<button class="tile cyan" onclick="safeInfo('ADB DEVICES')"><span class="ico">▣</span>ADB DEVICES</button>
+<button class="tile" onclick="safeInfo('ADB SHELL')"><span class="ico">⌘</span>ADB SHELL</button>
+<button class="tile purple" onclick="safeInfo('APP MANAGER')"><span class="ico">▦</span>APP MANAGER</button>
+<button class="tile" onclick="safeInfo('PUSH FILE')"><span class="ico">↑</span>PUSH FILE</button>
+<button class="tile" onclick="safeInfo('PULL FILE')"><span class="ico">↓</span>PULL FILE</button>
+<button class="tile cyan" onclick="safeInfo('LOGCAT')"><span class="ico">≋</span>LOGCAT</button>
+<button class="tile green" onclick="safeInfo('SCREEN INFO')"><span class="ico">▣</span>SCREEN INFO</button>
+<button class="tile" onclick="safeInfo('SCREENSHOT')"><span class="ico">▧</span>SCREENSHOT</button>
+</div><pre id="adbresult">ADB action বেছে নিলে এখানে ব্যাখ্যা দেখা যাবে।</pre></div>
+<div class="section"><h2 class="heading">FASTBOOT TOOLS</h2><div class="grid">
+<button class="tile cyan" onclick="safeInfo('FASTBOOT DEVICES')"><span class="ico">ϟ</span>FASTBOOT DEVICES</button>
+<button class="tile" onclick="safeInfo('REBOOT GUIDE')"><span class="ico">↻</span>REBOOT GUIDE</button>
+<button class="tile purple" onclick="safeInfo('DEVICE INFO')"><span class="ico">ⓘ</span>DEVICE INFO</button>
+<button class="tile" onclick="blocked('BOOTLOADER UNLOCK')"><span class="ico">🔒</span>BOOTLOADER UNLOCK</button>
+<button class="tile" onclick="blocked('FLASH / ERASE')"><span class="ico">⚠</span>FLASH / ERASE</button>
+<button class="tile" onclick="blocked('FRP BYPASS')"><span class="ico">🛡</span>FRP / LOCK</button>
+</div><pre id="fbresult">Fastboot tools require a native USB bridge and explicit device authorization.</pre></div>
 </section>
-<section class="card">
-<h2>USB / ADB ডিভাইস</h2><p class="muted">USB debugging চালু থাকা এবং ফোনে RSA অনুমতি দেওয়া থাকলে ADB ডিভাইস দেখা যাবে।</p>
-<div class="row"><button onclick="runTask('adb_devices')">ADB ডিভাইস স্ক্যান</button><button class="secondary" onclick="runTask('adb_info')">নিরাপদ ডিভাইস তথ্য</button></div>
-<pre id="adbout">এখানে ফলাফল দেখা যাবে।</pre>
-</section>
-<section class="card">
-<h2>Fastboot ডিভাইস</h2><p class="muted">ফোন bootloader/fastboot mode-এ থাকলে এবং USB সংযোগ ও ড্রাইভার ঠিক থাকলে পরীক্ষা করা যাবে। এই টুল শুধু ডিভাইস শনাক্ত করে; ফ্ল্যাশ, আনলক বা ডেটা মুছে ফেলার কাজ করে না।</p>
-<button onclick="runTask('fastboot_devices')">Fastboot ডিভাইস স্ক্যান</button>
-<pre id="fbout">এখানে ফলাফল দেখা যাবে।</pre>
-</section>
-<section class="card">
-<h2>লোকাল ফাইল নির্বাচন</h2><input type="file" id="file"><p id="fileinfo" class="muted">কোনো ফাইল নির্বাচন করা হয়নি। ফাইলটি কোথাও আপলোড করা হবে না।</p>
-</section>
-<section class="card warn">
-<h2>সুরক্ষা নোট</h2><p class="muted">শুধু নিজের বা স্পষ্ট অনুমতিপ্রাপ্ত ডিভাইসে ব্যবহার করো। অজানা কমান্ড চালিও না। এই সংস্করণে `flash`, `erase`, `format`, bootloader unlock/lock এবং FRP/লক বাইপাসের কমান্ড ইচ্ছাকৃতভাবে নেই।</p>
-</section>
-</main><footer>CTH FLASH TOOLS PRO · SHADOW JOKER</footer>
+<section id="adb" class="page hidden"><h2 class="heading">ADB TOOLS</h2><div class="panel"><p class="muted">ADB shell, app management, push/pull and logcat require a trusted native Android/desktop bridge. A hosted website cannot execute ADB directly.</p><button class="btn cyan" onclick="safeInfo('ADB DEVICES')">CHECK ADB SUPPORT</button><pre id="adbresult2">No native bridge connected.</pre></div></section>
+<section id="fastboot" class="page hidden"><h2 class="heading">FASTBOOT</h2><div class="panel"><p class="muted">এই ওয়েব UI নিজে Fastboot command চালায় না। Device-specific firmware flashing বা bootloader changes ভুল হলে ফোন অচল/ডেটা হারাতে পারে।</p><button class="btn" onclick="safeInfo('FASTBOOT DEVICES')">CHECK FASTBOOT SUPPORT</button><button class="btn" onclick="blocked('FRP BYPASS')">FRP / LOCK OPTIONS</button><pre id="fbresult2">No native bridge connected.</pre></div></section>
+<section id="files" class="page hidden"><h2 class="heading">FILE TOOLS</h2><div class="panel"><p class="muted">ফাইলটি শুধু এই পেজে নির্বাচন হবে; স্বয়ংক্রিয়ভাবে ফোনে পাঠানো হবে না।</p><input class="filepick" id="file" type="file"><pre id="fileout">No file selected.</pre></div></section>
+<section id="guide" class="page hidden"><h2 class="heading">CONNECTION GUIDE</h2><div class="panel"><p><span class="pill">USB / OTG</span></p><p class="muted">ডেটা-সাপোর্টেড OTG কেবল/অ্যাডাপ্টার ব্যবহার করো। Android host permissions ও browser support ডিভাইসভেদে আলাদা।</p><p><span class="pill">ADB</span></p><p class="muted">নিজের Android ফোনে Developer options থেকে USB debugging চালু করো। বিশ্বস্ত কম্পিউটারের RSA prompt ফোনে নিজে যাচাই করে অনুমোদন দাও।</p><p><span class="pill">FASTBOOT</span></p><p class="muted">শুধু নিজের ডিভাইসের প্রস্তুতকারকের অফিসিয়াল নির্দেশনা অনুসরণ করো। Flash/erase/unlock-এর আগে সম্পূর্ণ মডেল ও firmware নিশ্চিত করা জরুরি।</p><p><span class="pill">APP MODE</span></p><p class="muted">WebIntoApp wrapper একা native USB/ADB permission তৈরি করে না। এর জন্য আলাদা native Android plugin/bridge ও তার অনুমোদিত implementation প্রয়োজন।</p></div></section>
+<section id="settings" class="page hidden"><h2 class="heading">SETTINGS</h2><div class="panel"><p class="muted">CTH FLASH TOOLS PRO · DEVELOPER SHADOW JOKER</p><p class="muted">Mode: Web UI · USB: Browser permission only · ADB/Fastboot native bridge: not connected</p><button class="btn" onclick="go('home')">BACK TO HOME</button></div></section>
+</main><footer class="foot">CTH FLASH TOOLS PRO · DEVELOPER SHADOW JOKER</footer>
+</div>
 <script>
-const agentInput=document.getElementById('agent');
-function base(){return agentInput.value.trim().replace(/\/+$/,'')}
-async function checkAgent(){
- const s=document.getElementById('status');s.textContent='সংযোগ পরীক্ষা হচ্ছে…';
- try{let r=await fetch(base()+'/health',{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);let d=await r.json();s.textContent=d.ok?'Agent সংযুক্ত':'Agent পাওয়া যায়নি';s.style.background=d.ok?'#123b2a':'#4a2028'}
- catch(e){s.textContent='Agent সংযোগ নেই';s.style.background='#4a2028';}
+function go(id){document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));const page=document.getElementById(id);if(page)page.classList.remove('hidden');document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));window.scrollTo({top:0,behavior:'smooth'})}
+async function scanUSB(){
+ const out=document.getElementById('usbout'),msg=document.getElementById('usbmessage'),status=document.getElementById('status');
+ if(!('usb' in navigator)){out.textContent='WebUSB unsupported in this browser/app wrapper. Use a compatible HTTPS Chromium browser or a native app bridge.';msg.textContent='USB scan unavailable in this environment.';return}
+ try{const d=await navigator.usb.requestDevice({filters:[]});out.textContent=`USB permission granted for selected device.\\nVendor ID: 0x${d.vendorId.toString(16)}\\nProduct ID: 0x${d.productId.toString(16)}\\nName: ${d.productName||'Not provided'}\\n\\nThis is USB enumeration only, not ADB/Fastboot connectivity.`;msg.textContent='USB device selected by user.';status.textContent='• USB DEVICE SELECTED';status.style.color='#35e5a0'}catch(e){out.textContent='USB selection cancelled or unavailable: '+e.message}
 }
-async function runTask(task){
- const target=task.startsWith('fastboot')?'fbout':'adbout';const out=document.getElementById(target);out.textContent='কাজ চলছে…';
- try{const r=await fetch(base()+'/api/'+task,{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'});const d=await r.json();out.textContent=d.output||d.error||JSON.stringify(d,null,2)}
- catch(e){out.textContent='সংযোগ ব্যর্থ। Local Agent চালু আছে কি না দেখো।\\n'+e.message}
-}
-document.getElementById('file').addEventListener('change',e=>{const f=e.target.files[0];document.getElementById('fileinfo').textContent=f?`নাম: ${f.name}\\nআকার: ${f.size} bytes\\nটাইপ: ${f.type||'অজানা'} — ফাইলটি শুধু এই ব্রাউজারে নির্বাচিত হয়েছে।`:'কোনো ফাইল নির্বাচন করা হয়নি।'});
-checkAgent();
+function safeInfo(name){const s=`${name}\\n\\nএই ওয়েব পেজে native ADB/Fastboot bridge সংযুক্ত নেই। তাই কোনো command চালানো হয়নি। Hosted Render page সরাসরি ফোনের USB/ADB access পায় না।`;['adbresult','adbresult2'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=s});['fbresult','fbresult2'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=s})}
+function blocked(name){const s=name==='FRP BYPASS'?'FRP bypass বা Google account/device security lock এড়িয়ে যাওয়ার ফিচার দেওয়া হয়নি। নিজের ডিভাইস হলে নির্মাতার অফিসিয়াল account recovery বা অনুমোদিত service ব্যবহার করো.':'Bootloader unlock, flash, erase বা lock পরিবর্তন এই UI থেকে চালানো হয় না; ভুল কমান্ডে ডেটা হারাতে বা ডিভাইস অচল হতে পারে। প্রস্তুতকারকের অফিসিয়াল নির্দেশনা অনুসরণ করো।';document.getElementById('fbresult').textContent=s;document.getElementById('fbresult2').textContent=s}
+document.getElementById('file').addEventListener('change',e=>{let f=e.target.files[0];document.getElementById('fileout').textContent=f?`Name: ${f.name}\\nSize: ${f.size} bytes\\nType: ${f.type||'unknown'}\\nLocal selection only; no upload performed.`:'No file selected.'});
 </script>
 </body></html>
