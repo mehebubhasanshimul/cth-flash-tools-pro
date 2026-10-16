@@ -1,4 +1,3 @@
-# Static dashboard only. Render cannot access your phone's USB port.
 services:
   - type: web
     name: cth-flash-tools-pro
