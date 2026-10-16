@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CTH FLASH TOOLS PRO</title>
+<style>
+:root{color-scheme:dark;--red:#ff2448;--bg:#08090d;--panel:#12141c;--muted:#aab0c0}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#2a0a14 0,#08090d 48%);color:#f7f7fb;font:15px system-ui,Arial}
+header{padding:24px 16px;text-align:center;border-bottom:1px solid #3b1822}header h1{margin:0;color:#ff3858;letter-spacing:1.5px;font-size:clamp(23px,5vw,34px);text-shadow:0 0 18px #ff244855}header p{margin:8px 0 0;color:var(--muted)}
+main{max-width:900px;margin:auto;padding:16px;display:grid;gap:14px}.card{background:linear-gradient(145deg,#171923,#0e1016);border:1px solid #33202a;border-radius:16px;padding:16px;box-shadow:0 8px 28px #0005}
+h2{font-size:18px;margin:0 0 12px;color:#ff627a}.row{display:flex;gap:8px;flex-wrap:wrap}button,input{font:inherit;border-radius:10px;padding:11px 13px}button{background:#a90d2b;color:white;border:1px solid #ff526c;cursor:pointer;font-weight:650}button.secondary{background:#20232d;border-color:#414653}button:disabled{opacity:.5;cursor:not-allowed}input{background:#080a10;color:white;border:1px solid #3c414f;flex:1;min-width:190px}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#07080c;border:1px solid #292d38;padding:12px;border-radius:10px;min-height:90px;color:#d9e2f3}.muted{color:var(--muted);line-height:1.55}.status{display:inline-block;padding:5px 9px;border-radius:20px;background:#282b36;color:#ddd;margin-bottom:10px}.warn{border-color:#7b4c19;color:#ffd8a3}.small{font-size:12px;color:#9ba2b3}footer{text-align:center;color:#828999;padding:20px}
+</style>
+</head>
+<body>
+<header><h1>CTH FLASH TOOLS PRO</h1><p>DEVELOPER: SHADOW JOKER</p></header>
+<main>
+<section class="card">
+<h2>Local Device Agent</h2><div id="status" class="status">Agent পরীক্ষা করা হচ্ছে…</div>
+<p class="muted">এই প্যানেলটি তোমার নিজের কম্পিউটার বা অনুমোদিত লোকাল পরিবেশে চালানো CTH Local Agent-এর সঙ্গে কাজ করে। Render/GitHub-এর ওয়েবসাইট সরাসরি USB পোর্ট দেখতে পারে না।</p>
+<div class="row"><input id="agent" value="http://127.0.0.1:8765" aria-label="Local agent address"><button onclick="checkAgent()">সংযোগ পরীক্ষা</button></div>
+</section>
+<section class="card">
+<h2>USB / ADB ডিভাইস</h2><p class="muted">USB debugging চালু থাকা এবং ফোনে RSA অনুমতি দেওয়া থাকলে ADB ডিভাইস দেখা যাবে।</p>
+<div class="row"><button onclick="runTask('adb_devices')">ADB ডিভাইস স্ক্যান</button><button class="secondary" onclick="runTask('adb_info')">নিরাপদ ডিভাইস তথ্য</button></div>
+<pre id="adbout">এখানে ফলাফল দেখা যাবে।</pre>
+</section>
+<section class="card">
+<h2>Fastboot ডিভাইস</h2><p class="muted">ফোন bootloader/fastboot mode-এ থাকলে এবং USB সংযোগ ও ড্রাইভার ঠিক থাকলে পরীক্ষা করা যাবে। এই টুল শুধু ডিভাইস শনাক্ত করে; ফ্ল্যাশ, আনলক বা ডেটা মুছে ফেলার কাজ করে না।</p>
+<button onclick="runTask('fastboot_devices')">Fastboot ডিভাইস স্ক্যান</button>
+<pre id="fbout">এখানে ফলাফল দেখা যাবে।</pre>
+</section>
+<section class="card">
+<h2>লোকাল ফাইল নির্বাচন</h2><input type="file" id="file"><p id="fileinfo" class="muted">কোনো ফাইল নির্বাচন করা হয়নি। ফাইলটি কোথাও আপলোড করা হবে না।</p>
+</section>
+<section class="card warn">
+<h2>সুরক্ষা নোট</h2><p class="muted">শুধু নিজের বা স্পষ্ট অনুমতিপ্রাপ্ত ডিভাইসে ব্যবহার করো। অজানা কমান্ড চালিও না। এই সংস্করণে `flash`, `erase`, `format`, bootloader unlock/lock এবং FRP/লক বাইপাসের কমান্ড ইচ্ছাকৃতভাবে নেই।</p>
+</section>
+</main><footer>CTH FLASH TOOLS PRO · SHADOW JOKER</footer>
+<script>
+const agentInput=document.getElementById('agent');
+function base(){return agentInput.value.trim().replace(/\/+$/,'')}
+async function checkAgent(){
+ const s=document.getElementById('status');s.textContent='সংযোগ পরীক্ষা হচ্ছে…';
+ try{let r=await fetch(base()+'/health',{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);let d=await r.json();s.textContent=d.ok?'Agent সংযুক্ত':'Agent পাওয়া যায়নি';s.style.background=d.ok?'#123b2a':'#4a2028'}
+ catch(e){s.textContent='Agent সংযোগ নেই';s.style.background='#4a2028';}
+}
+async function runTask(task){
+ const target=task.startsWith('fastboot')?'fbout':'adbout';const out=document.getElementById(target);out.textContent='কাজ চলছে…';
+ try{const r=await fetch(base()+'/api/'+task,{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'});const d=await r.json();out.textContent=d.output||d.error||JSON.stringify(d,null,2)}
+ catch(e){out.textContent='সংযোগ ব্যর্থ। Local Agent চালু আছে কি না দেখো।\\n'+e.message}
+}
+document.getElementById('file').addEventListener('change',e=>{const f=e.target.files[0];document.getElementById('fileinfo').textContent=f?`নাম: ${f.name}\\nআকার: ${f.size} bytes\\nটাইপ: ${f.type||'অজানা'} — ফাইলটি শুধু এই ব্রাউজারে নির্বাচিত হয়েছে।`:'কোনো ফাইল নির্বাচন করা হয়নি।'});
+checkAgent();
+</script>
+</body></html>
